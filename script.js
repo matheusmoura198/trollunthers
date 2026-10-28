@@ -5,7 +5,7 @@ const chars=[
 ['img/claire.jpg','Claire','Aliada','Corajosa e inteligente, entra de cabeça no mundo dos trolls.'],
 ['img/blinky.jpg','Blinky','Mentor','Troll estudioso e treinador do Caçador.'],
 ['img/aaarrrgghh.jpg','AAARRRGGHH!!!','Pacifista','Troll gigante e gentil, mestre da força.'],
-['img/merlin.jpg','Merlin','Criador do Amuleto','O primeiro Caçador de Trolls.'],
+['img/merlin.jpg','Merlin','Criador do Amuleto.'],
 ['img/gunmar.jpg','Gunmar','Rei dos Gumm-Gumms','O Negro, que quer destruir a Luz.'],
 ['img/bular.jpg','Bular','Vilão','Filho de Gunmar e rival do Caçador.']];
 const P={'Jim Lake Jr.':'50% 25%','Toby':'50% 30%','Claire':'50% 35%','Blinky':'50% 30%','AAARRRGGHH!!!':'50% 25%','Merlin':'75% 30%','Gunmar':'50% 40%','Bular':'50% 55%'};
