@@ -125,5 +125,5 @@ footer{text-align:center;color:var(--mut);padding:40px 5vw;font-size:.85rem}
 
 /* amuleto em imagem */
 .amu img{width:100%;display:block;transition:filter .9s;user-select:none}
-:root[data-t=ruina] .amu img{filter:hue-rotate(145deg) saturate(1.4)}
+:root[data-t=ruina] .amu img{filter:hue-rotate(165deg) saturate(1.4)}
      
