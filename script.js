@@ -1,14 +1,15 @@
 const $=s=>document.querySelector(s),root=document.documentElement;
 const chars=[
-['J','Jim Lake Jr.','Caçador de Trolls','Garoto de Arcadia que herda o Amuleto da Luz do Dia.'],
-['T','Toby','Melhor amigo','Leal, divertido e sempre pronto para a batalha.'],
-['C','Claire','Aliada','Corajosa e inteligente, entra de cabeça no mundo dos trolls.'],
-['B','Blinky','Mentor','Troll estudioso e treinador do Caçador.'],
-['A','AAARRRGGHH!!!','Guerreiro','Troll gigante e gentil, mestre da força.'],
-['M','Merlin','Criador do Amuleto','O primeiro Caçador de Trolls.'],
-['G','Gunmar','Rei dos Gumm-Gumms','O Negro, que quer destruir a Luz.'],
-['B','Bular','Vilão','Filho de Gunmar e rival do Caçador.']];
-$('#chars').innerHTML=chars.map((c,i)=>`<div class="card rv" style="--d:${(i%4)*.12}s"><em>${c[0]}</em><h3>${c[1]}</h3><small>${c[2]}</small><p>${c[3]}</p></div>`).join('');
+['img/jim.jpg','Jim Lake Jr.','Caçador de Trolls','Garoto de Arcadia que herda o Amuleto da Luz do Dia.'],
+['img/toby.jpg','Toby','Melhor amigo','Leal, divertido e sempre pronto para a batalha.'],
+['img/claire.jpg','Claire','Aliada','Corajosa e inteligente, entra de cabeça no mundo dos trolls.'],
+['img/blinky.jpg','Blinky','Mentor','Troll estudioso e treinador do Caçador.'],
+['img/aaarrrgghh.jpg','AAARRRGGHH!!!','Guerreiro','Troll gigante e gentil, mestre da força.'],
+['img/merlin.jpg','Merlin','Criador do Amuleto','O primeiro Caçador de Trolls.'],
+['img/gunmar.jpg','Gunmar','Rei dos Gumm-Gumms','O Negro, que quer destruir a Luz.'],
+['img/bular.jpg','Bular','Vilão','Filho de Gunmar e rival do Caçador.']];
+const P={'Jim Lake Jr.':'50% 25%','Toby':'50% 30%','Claire':'50% 35%','Blinky':'50% 30%','AAARRRGGHH!!!':'50% 25%','Merlin':'75% 30%','Gunmar':'50% 40%','Bular':'50% 55%'};
+$('#chars').innerHTML=chars.map((c,i)=>`<div class="card rv" style="--d:${(i%4)*.12}s"><img class="foto" src="${c[0]}" alt="${c[1]}" style="object-position:${P[c[1]]}" loading="lazy"><h3>${c[1]}</h3><small>${c[2]}</small><p>${c[3]}</p></div>`).join('');
 const seasons=[
 ['Temporada 1 (2016)','26 episódios','Jim recebe o Amuleto da Luz do Dia e descobre Trolltown. Ele precisa defender Arcadia dos Gumm-Gumms enquanto esconde tudo da família.'],
 ['Temporada 2 (2017)','13 episódios','A ameaça de Gunmar cresce e o Eclipse se aproxima. Jim enfrenta escolhas difíceis e passa a usar a armadura do Eclipse, em preto e vermelho.'],
@@ -71,4 +72,3 @@ function qEnd(){
  $('#qr').onclick=()=>{qi=0;qs=0;qShow()};
 }
 qShow();
-  
