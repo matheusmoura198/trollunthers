@@ -126,4 +126,8 @@ footer{text-align:center;color:var(--mut);padding:40px 5vw;font-size:.85rem}
 /* amuleto em imagem */
 .amu img{width:100%;display:block;transition:filter .9s;user-select:none}
 :root[data-t=ruina] .amu img{filter:hue-rotate(165deg) saturate(1.4)}
-     
+
+/* fotos dos personagens */
+.card .foto{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;margin-bottom:14px;display:block;transition:transform .5s,filter .5s;filter:saturate(.95)}
+.card:hover .foto{transform:scale(1.04);filter:saturate(1.15)}
+    
