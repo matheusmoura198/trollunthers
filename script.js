@@ -4,7 +4,7 @@ const chars=[
 ['img/toby.jpg','Toby','Melhor amigo','Leal, divertido e sempre pronto para a batalha.'],
 ['img/claire.jpg','Claire','Aliada','Corajosa e inteligente, entra de cabeça no mundo dos trolls.'],
 ['img/blinky.jpg','Blinky','Mentor','Troll estudioso e treinador do Caçador.'],
-['img/aaarrrgghh.jpg','AAARRRGGHH!!!','Guerreiro','Troll gigante e gentil, mestre da força.'],
+['img/aaarrrgghh.jpg','AAARRRGGHH!!!','Pacifista','Troll gigante e gentil, mestre da força.'],
 ['img/merlin.jpg','Merlin','Criador do Amuleto','O primeiro Caçador de Trolls.'],
 ['img/gunmar.jpg','Gunmar','Rei dos Gumm-Gumms','O Negro, que quer destruir a Luz.'],
 ['img/bular.jpg','Bular','Vilão','Filho de Gunmar e rival do Caçador.']];
