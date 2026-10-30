@@ -142,4 +142,41 @@ $('#ap').onclick=()=>snap(-1);$('#an').onclick=()=>snap(1);
 dots.forEach((d,k)=>d.onclick=()=>{const t=Math.round(ang/120);snap(k-(((t%3)+3)%3))});
 stg.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')snap(-1);if(e.key==='ArrowRight')snap(1)});
 apply();
- 
+
+/* partículas */
+const pcv=$('#fx'),pcx=pcv.getContext('2d');let pw,ph,pfc=0,pcol=['#39d0ff','#2f7bff'];const pps=[];
+function prs(){pw=pcv.width=innerWidth;ph=pcv.height=innerHeight}
+prs();addEventListener('resize',prs);
+const pmk=init=>({x:Math.random()*pw,y:init?Math.random()*ph:ph+10,r:Math.random()*2+.6,v:Math.random()*.5+.15,dx:(Math.random()-.5)*.3,p:Math.random()*6.28,a:Math.random()*.6+.2,c:Math.random()<.5?0:1});
+for(let i=0;i<(innerWidth<700?35:70);i++)pps.push(pmk(true));
+function pfx(){
+ pfc++;
+ if(pfc%20===1){const cs=getComputedStyle(root);pcol=[cs.getPropertyValue('--ac2').trim()||pcol[0],cs.getPropertyValue('--ac').trim()||pcol[1]]}
+ pcx.clearRect(0,0,pw,ph);
+ for(const q of pps){
+  q.y-=q.v;q.x+=q.dx+Math.sin(q.p+pfc*.01)*.2;
+  if(q.y<-10)Object.assign(q,pmk(false));
+  pcx.globalAlpha=q.a*(.6+.4*Math.sin(q.p+pfc*.03));
+  pcx.fillStyle=pcx.shadowColor=pcol[q.c];pcx.shadowBlur=8;
+  pcx.beginPath();pcx.arc(q.x,q.y,q.r,0,6.28);pcx.fill();
+ }
+ requestAnimationFrame(pfx);
+}
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)pfx();
+/* progresso + topo */
+const pgi=$('#pg i'),pgm=$('#pg img'),bt=$('#top');
+function prog(){const m=document.documentElement.scrollHeight-innerHeight,p=m>0?scrollY/m:0;pgi.style.width=(p*100)+'%';pgm.style.left=(p*100)+'%';pgm.style.transform=`rotate(${p*1440}deg)`;bt.classList.toggle('show',scrollY>700)}
+addEventListener('scroll',prog,{passive:true});addEventListener('resize',prog);prog();
+bt.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+/* transformação do amuleto */
+function armor(){
+ const r=amu.getBoundingClientRect(),t=root.dataset.t,rn=$('#rn');
+ rn.style.left=(r.left+r.width/2)+'px';rn.style.top=(r.top+r.height/2)+'px';
+ $('#tt').textContent=t==='ruina'?'Armadura do Eclipse ativada':'Armadura da Luz do Dia ativada';
+ ['fl','rn','tt'].forEach(id=>{const e=$('#'+id);e.classList.remove('go');e.offsetWidth;e.classList.add('go')});
+ amu.classList.add('pulse');setTimeout(()=>amu.classList.remove('pulse'),1500);
+ tone(t);
+}
+amu.addEventListener('click',armor);
+amu.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();armor()}});
+                      
