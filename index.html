@@ -13,7 +13,7 @@
 <div class="md" id="md"><div class="mdc"><button class="x" id="mdx" aria-label="Fechar">×</button><img id="mdi" alt=""><div><h3 id="mdn"></h3><small id="mdr"></small><p id="mdt"></p></div></div></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="16"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter></svg>
 
-<nav><b class="grad">TROLLHUNTERS</b><div><a href="#hero">Início</a><a href="#escolha">Escolha</a><a href="#herois">Personagens</a><a href="#temporadas">Temporadas</a><a href="#trailer">Trailer</a><a href="#assistir">Assistir</a><a href="#tempo">Linha do tempo</a><a href="#armas">Armas</a><a href="#mapa">Mapa</a><a href="#curiosidades">Curiosidades</a><a href="#segredo">Segredo</a><a href="#quiz">Quiz</a></div></nav>
+<nav><b class="grad">TROLLHUNTERS</b><div><a href="#hero">Início</a><a href="#escolha">Escolha</a><a href="#herois">Personagens</a><a href="#temporadas">Temporadas</a><a href="#trailer">Trailer</a><a href="#assistir">Assistir</a><a href="#tempo">Linha do tempo</a><a href="#armas">Armas</a><a href="#arsenal">Arsenal 3D</a><a href="#mapa">Mapa</a><a href="#curiosidades">Curiosidades</a><a href="#segredo">Segredo</a><a href="#quiz">Quiz</a></div></nav>
 
 <section class="hero" id="hero">
   <div class="goo"><i></i><i></i><i></i><i id="mb"></i></div>
@@ -79,6 +79,20 @@
     <div class="card rv" style="--d:.12s"><em>II</em><h3>Espada da Luz do Dia</h3><small>Arma do Caçador</small><p>Surge do Amuleto e brilha com a luz azul.</p></div>
     <div class="card rv eclipse" style="--d:.24s"><em>III</em><h3>Armadura do Eclipse</h3><small>Preto e vermelho</small><p>O visual sombrio de Jim em uma fase mais difícil da história.</p></div>
   </div></div></section>
+
+<section id="arsenal"><div class="wrap" style="text-align:center">
+  <h2 class="rv">Arsenal <span class="grad">em 3D</span></h2>
+  <p class="lead rv" style="margin:auto">Arraste para girar as três armas principais da trama.</p>
+  <div class="stage rv" id="stage" tabindex="0" aria-label="Carrossel 3D de armas">
+    <div class="ring" id="ring">
+      <div class="arm" style="--k:0"><img src="img/arma-amuleto.png" alt="Amuleto da Luz do Dia" draggable="false"></div>
+      <div class="arm" style="--k:1"><img src="img/arma-cajado.png" alt="Cajado das Sombras" draggable="false" style="rotate:16deg"></div>
+      <div class="arm" style="--k:2"><img src="img/arma-martelo.png" alt="Martelo de Guerra" draggable="false" style="rotate:12deg"></div>
+    </div>
+  </div>
+  <div class="armnav"><button id="ap" aria-label="Anterior">‹</button><div class="dots" id="dots"><i></i><i></i><i></i></div><button id="an" aria-label="Próxima">›</button></div>
+  <div class="arminfo" id="ai"></div>
+</div></section>
 
 <section class="vid" id="trailer">
   <div class="st">
@@ -176,5 +190,5 @@
 
 <script src="script.js"></script>
 </body>
-                                                                                                                     </html>
-                                                                                                                     
+  </html>
+      
