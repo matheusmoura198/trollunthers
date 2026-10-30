@@ -122,4 +122,24 @@ function q2End(){
  $('#q2r').onclick=()=>{q2i=0;q2s=[0,0,0,0,0];q2Show()};
 }
 q2Show();
+
+/* arsenal 3D */
+const AR=[['Amuleto da Luz do Dia','Jim Lake Jr.','Concede ao Caçador a armadura e a espada da luz.'],['Cajado das Sombras','Claire Nuñez','Cajado de poder sombrio que Claire passa a empunhar.'],['Martelo de Guerra','Toby Domzalski','O martelo de guerra do melhor amigo de Jim.']];
+const rg=$('#ring'),arms=[...rg.children],dots=[...$('#dots').children],ai=$('#ai'),stg=$('#stage');
+let ang=0,cur=-1,drag=false,sx=0,a0=0;
+function apply(){
+ rg.style.transform=`rotateY(${ang}deg)`;
+ const i=((Math.round(ang/120)%3)+3)%3;
+ if(i!==cur){cur=i;arms.forEach((p,k)=>p.classList.toggle('act',k===i));dots.forEach((d,k)=>d.classList.toggle('on',k===i));
+  const w=AR[i];ai.innerHTML=`<small>${w[1]}</small><h3>${w[0]}</h3><p>${w[2]}</p>`;ai.classList.remove('sw');ai.offsetWidth;ai.classList.add('sw')}
+}
+function snap(d){ang=Math.round(ang/120)*120+(d||0)*120;rg.style.transition='transform .8s cubic-bezier(.2,.7,.2,1)';apply()}
+stg.addEventListener('pointerdown',e=>{drag=true;sx=e.clientX;a0=ang;rg.style.transition='none';stg.setPointerCapture(e.pointerId)});
+stg.addEventListener('pointermove',e=>{if(!drag)return;ang=a0+(e.clientX-sx)*.5;apply()});
+const end=()=>{if(drag){drag=false;snap(0)}};
+stg.addEventListener('pointerup',end);stg.addEventListener('pointercancel',end);
+$('#ap').onclick=()=>snap(-1);$('#an').onclick=()=>snap(1);
+dots.forEach((d,k)=>d.onclick=()=>{const t=Math.round(ang/120);snap(k-(((t%3)+3)%3))});
+stg.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')snap(-1);if(e.key==='ArrowRight')snap(1)});
+apply();
  
