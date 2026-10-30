@@ -101,7 +101,7 @@ document.querySelectorAll('.flip').forEach(f=>f.onclick=()=>f.classList.toggle('
 /* som */
 let snd=false,AC;const sb=$('#snd');
 function tone(t){if(!snd)return;AC=AC||new(window.AudioContext||window.webkitAudioContext)();const n=t==='gloria'?[440,554,659,880]:[220,185,147,110];n.forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain(),s=AC.currentTime+i*.12;o.type=t==='gloria'?'sine':'sawtooth';o.frequency.value=f;g.gain.setValueAtTime(.0001,s);g.gain.exponentialRampToValueAtTime(.1,s+.03);g.gain.exponentialRampToValueAtTime(.0001,s+.5);o.connect(g);g.connect(AC.destination);o.start(s);o.stop(s+.55)})}
-sb.onclick=()=>{snd=!snd;sb.textContent=snd?'🔊 Som':'🔇 Som';sb.setAttribute('aria-pressed',snd);tone(root.dataset.t)};
+sb.onclick=()=>{snd=!snd;sb.innerHTML=snd?'🔊<span> Som</span>':'🔇<span> Som</span>';sb.setAttribute('aria-pressed',snd);tone(root.dataset.t)};
 document.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>tone(o.dataset.t)));
 /* quiz 2 */
 const Q2=[['Seu superpoder seria…',[['Coragem para liderar',0],['Humor que anima todo mundo',1],['Estratégia afiada',2],['Sabedoria dos livros',3]]],
@@ -118,7 +118,7 @@ function q2Show(){
 }
 function q2End(){
  const w=q2s.indexOf(Math.max(...q2s)),c=chars[w];
- b2.innerHTML=`<div class="qbar"><i style="width:100%"></i></div><div class="qres res qin"><img src="${c[0]}" alt="${c[1]}" style="object-position:${P[c[1]]}"><h3 class="grad" style="font-size:2rem;font-family:Impact,sans-serif;text-transform:uppercase">${c[1]}</h3><p style="color:var(--mut);margin:8px 0">${D[c[1]]}</p><button class="btn" id="q2r" style="border:0;cursor:pointer;font:inherit;font-weight:700">Refazer</button></div>`;
+ b2.innerHTML=`<div class="qbar"><i style="width:100%"></i></div><div class="qres res qin"><img src="${c[0]}" alt="${c[1]}" style="object-position:${P[c[1]]}"><h3 class="grad" style="font-size:2rem;font-family:Anton,Impact,sans-serif;text-transform:uppercase">${c[1]}</h3><p style="color:var(--mut);margin:8px 0">${D[c[1]]}</p><button class="btn" id="q2r" style="border:0;cursor:pointer;font:inherit;font-weight:700">Refazer</button></div>`;
  $('#q2r').onclick=()=>{q2i=0;q2s=[0,0,0,0,0];q2Show()};
 }
 q2Show();
@@ -179,4 +179,4 @@ function armor(){
 }
 amu.addEventListener('click',armor);
 amu.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();armor()}});
-                      
+  
