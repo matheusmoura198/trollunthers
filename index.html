@@ -7,9 +7,13 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="ld"><img src="amuleto.png" alt=""></div>
+<div id="cur"></div>
+<button id="snd" aria-pressed="false">🔇 Som</button>
+<div class="md" id="md"><div class="mdc"><button class="x" id="mdx" aria-label="Fechar">×</button><img id="mdi" alt=""><div><h3 id="mdn"></h3><small id="mdr"></small><p id="mdt"></p></div></div></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="16"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter></svg>
 
-<nav><b class="grad">TROLLHUNTERS</b><div><a href="#hero">Início</a><a href="#escolha">Escolha</a><a href="#herois">Personagens</a><a href="#temporadas">Temporadas</a><a href="#trailer">Trailer</a><a href="#assistir">Assistir</a><a href="#segredo">Segredo</a><a href="#quiz">Quiz</a></div></nav>
+<nav><b class="grad">TROLLHUNTERS</b><div><a href="#hero">Início</a><a href="#escolha">Escolha</a><a href="#herois">Personagens</a><a href="#temporadas">Temporadas</a><a href="#trailer">Trailer</a><a href="#assistir">Assistir</a><a href="#tempo">Linha do tempo</a><a href="#armas">Armas</a><a href="#mapa">Mapa</a><a href="#curiosidades">Curiosidades</a><a href="#segredo">Segredo</a><a href="#quiz">Quiz</a></div></nav>
 
 <section class="hero" id="hero">
   <div class="goo"><i></i><i></i><i></i><i id="mb"></i></div>
@@ -21,7 +25,7 @@
   </div>
   <div class="scene rv" style="--d:.3s" id="scene">
     <div class="amu" id="amu">
-      <img src="img/amuleto.png" alt="Amuleto da Luz do Dia" draggable="false">
+      <img src="amuleto.png" alt="Amuleto da Luz do Dia" draggable="false">
     </div>
   </div>
 </section>
@@ -58,6 +62,24 @@
   </div>
 </section>
 
+<section id="tempo"><div class="wrap">
+  <h2 class="rv">Linha do <span class="grad">tempo</span></h2>
+  <ul class="tl">
+    <li class="rv"><b>O Amuleto escolhe Jim</b><p>Um garoto comum vira o primeiro Caçador de Trolls humano.</p></li>
+    <li class="rv"><b>Trolltown é revelada</b><p>Jim descobre o mundo secreto sob Arcadia e ganha seus aliados.</p></li>
+    <li class="rv"><b>A ameaça de Gunmar</b><p>Os Gumm-Gumms avançam e o Eclipse se aproxima.</p></li>
+    <li class="rv"><b>A Armadura do Eclipse</b><p>Jim enfrenta escolhas difíceis e surge o visual preto e vermelho.</p></li>
+    <li class="rv"><b>A guerra final</b><p>Todos os aliados se unem pela sobrevivência de Arcadia.</p></li>
+  </ul></div></section>
+
+<section id="armas"><div class="wrap">
+  <h2 class="rv">Armas e <span class="grad">armaduras</span></h2>
+  <div class="grid">
+    <div class="card rv"><em>I</em><h3>Amuleto da Luz do Dia</h3><small>Criado por Merlin</small><p>Dá ao Caçador a armadura e a espada da luz.</p></div>
+    <div class="card rv" style="--d:.12s"><em>II</em><h3>Espada da Luz do Dia</h3><small>Arma do Caçador</small><p>Surge do Amuleto e brilha com a luz azul.</p></div>
+    <div class="card rv eclipse" style="--d:.24s"><em>III</em><h3>Armadura do Eclipse</h3><small>Preto e vermelho</small><p>O visual sombrio de Jim em uma fase mais difícil da história.</p></div>
+  </div></div></section>
+
 <section class="vid" id="trailer">
   <div class="st">
     <h2>Entre em <span class="grad">Trolltown</span></h2>
@@ -93,6 +115,38 @@
   </div>
 </section>
 
+<section id="universo"><div class="wrap">
+  <h2 class="rv">Contos de <span class="grad">Arcadia</span></h2>
+  <p class="lead rv">Caçadores de Trolls abriu a trilogia do universo de Guillermo del Toro.</p>
+  <div class="grid">
+    <div class="card rv"><em>2016</em><h3>Caçadores de Trolls</h3><p>Onde tudo começa.</p></div>
+    <div class="card rv" style="--d:.1s"><em>2018</em><h3>3Below</h3><p>Dois príncipes alienígenas escondidos em Arcadia.</p></div>
+    <div class="card rv" style="--d:.2s"><em>2020</em><h3>Magos</h3><p>Magia e Camelot chegam à cidade.</p></div>
+    <div class="card rv" style="--d:.3s"><em>2021</em><h3>Rise of the Titans</h3><p>O filme que reúne as três histórias.</p></div>
+  </div></div></section>
+
+<section id="mapa"><div class="wrap">
+  <h2 class="rv">Mapa de <span class="grad">Arcadia</span></h2>
+  <p class="lead rv">Toque nos pontos para explorar.</p>
+  <div class="map rv"><i class="lv s">Superfície</i><i class="lv u">Subterrâneo</i>
+    <button class="pin" style="left:18%;top:30%" data-k="0">1</button>
+    <button class="pin" style="left:52%;top:26%" data-k="1">2</button>
+    <button class="pin" style="left:30%;top:72%" data-k="2">3</button>
+    <button class="pin" style="left:76%;top:76%" data-k="3">4</button>
+  </div>
+  <div class="mapinfo" id="mpi"><b>Escolha um ponto</b><p>Cada lugar guarda um pedaço da história.</p></div></div></section>
+
+<section id="curiosidades"><div class="wrap">
+  <h2 class="rv">Curiosi<span class="grad">dades</span></h2>
+  <p class="lead rv">Toque no card para virar.</p>
+  <div class="flips">
+    <button class="flip rv"><span class="fr">O livro</span><span class="bk">A série é baseada no romance Trollhunters, de Guillermo del Toro e Daniel Kraus (2015).</span></button>
+    <button class="flip rv" style="--d:.1s"><span class="fr">Livro x série</span><span class="bk">No livro o protagonista tem outro sobrenome, e a ambientação é diferente da série.</span></button>
+    <button class="flip rv" style="--d:.2s"><span class="fr">Dublagem do Jim</span><span class="bk">Anton Yelchin dublou o Jim no começo, e Emile Hirsch assumiu depois da morte do ator em 2016.</span></button>
+    <button class="flip rv" style="--d:.3s"><span class="fr">Elenco</span><span class="bk">Kelsey Grammer dubla o Blinky e Ron Perlman dubla o Gunmar.</span></button>
+    <button class="flip rv" style="--d:.4s"><span class="fr">Universo</span><span class="bk">A série abre a trilogia Contos de Arcadia.</span></button>
+  </div></div></section>
+
 <section>
   <div class="wrap" style="text-align:center">
     <h2 class="rv">Gire o <span class="grad">universo</span></h2>
@@ -114,9 +168,13 @@
   </div>
 </section>
 
+<section id="quiz2"><div class="wrap">
+  <h2 class="rv">Qual personagem <span class="grad">é você</span>?</h2>
+  <div class="qbox rv" id="qbox2"></div></div></section>
+
 <footer>Site de fã, sem fins lucrativos. Caçadores de Trolls © DreamWorks / Netflix.</footer>
 
 <script src="script.js"></script>
 </body>
-    </html>
-    
+                                                                                                                     </html>
+                                                                                                                     
