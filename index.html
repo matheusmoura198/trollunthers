@@ -9,6 +9,10 @@
 <body>
 <div id="ld"><img src="amuleto.png" alt=""></div>
 <div id="cur"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div id="pg" aria-hidden="true"><i></i><img src="amuleto.png" alt=""></div>
+<div id="fl"></div><div id="rn"></div><div id="tt" role="status"></div>
+<button id="top" aria-label="Voltar ao topo">▲</button>
 <button id="snd" aria-pressed="false">🔇 Som</button>
 <div class="md" id="md"><div class="mdc"><button class="x" id="mdx" aria-label="Fechar">×</button><img id="mdi" alt=""><div><h3 id="mdn"></h3><small id="mdr"></small><p id="mdt"></p></div></div></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="16"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter></svg>
@@ -24,9 +28,10 @@
     <a class="btn rv" style="--d:.45s" href="#escolha">Escolha seu lado</a>
   </div>
   <div class="scene rv" style="--d:.3s" id="scene">
-    <div class="amu" id="amu">
+    <div class="amu" id="amu" tabindex="0" role="button" aria-label="Ativar a armadura">
       <img src="img/amuleto.png" alt="Amuleto da Luz do Dia" draggable="false">
     </div>
+    <p class="hint">Toque no amuleto</p>
   </div>
 </section>
 
@@ -190,5 +195,5 @@
 
 <script src="script.js"></script>
 </body>
-  </html>
-      
+        </html>
+                                                                      
