@@ -4,12 +4,12 @@ const chars=[
 ['img/toby.jpg','Toby','Melhor amigo','Leal, divertido e sempre pronto para a batalha.'],
 ['img/claire.jpg','Claire','Aliada','Corajosa e inteligente, entra de cabeça no mundo dos trolls.'],
 ['img/blinky.jpg','Blinky','Mentor','Troll estudioso e treinador do Caçador.'],
-['img/aaarrrgghh.jpg','AAARRRGGHH!!!','Pacifista','Troll gigante e gentil, mestre da força.'],
-['img/merlin.jpg','Merlin','Criador do Amuleto.'],
+['img/aaarrrgghh.jpg','AAARRRGGHH!!!','Guerreiro','Troll gigante e gentil, mestre da força.'],
+['img/merlin.jpg','Merlin','Criador do Amuleto','O primeiro Caçador de Trolls.'],
 ['img/gunmar.jpg','Gunmar','Rei dos Gumm-Gumms','O Negro, que quer destruir a Luz.'],
 ['img/bular.jpg','Bular','Vilão','Filho de Gunmar e rival do Caçador.']];
 const P={'Jim Lake Jr.':'50% 25%','Toby':'50% 30%','Claire':'50% 35%','Blinky':'50% 30%','AAARRRGGHH!!!':'50% 25%','Merlin':'75% 30%','Gunmar':'50% 40%','Bular':'50% 55%'};
-$('#chars').innerHTML=chars.map((c,i)=>`<div class="card rv" style="--d:${(i%4)*.12}s"><img class="foto" src="${c[0]}" alt="${c[1]}" style="object-position:${P[c[1]]}" loading="lazy"><h3>${c[1]}</h3><small>${c[2]}</small><p>${c[3]}</p></div>`).join('');
+$('#chars').innerHTML=chars.map((c,i)=>`<div class="card rv" data-i="${i}" tabindex="0" style="--d:${(i%4)*.12}s"><img class="foto" src="${c[0]}" alt="${c[1]}" style="object-position:${P[c[1]]}" loading="lazy"><h3>${c[1]}</h3><small>${c[2]}</small><p>${c[3]}</p></div>`).join('');
 const seasons=[
 ['Temporada 1 (2016)','26 episódios','Jim recebe o Amuleto da Luz do Dia e descobre Trolltown. Ele precisa defender Arcadia dos Gumm-Gumms enquanto esconde tudo da família.'],
 ['Temporada 2 (2017)','13 episódios','A ameaça de Gunmar cresce e o Eclipse se aproxima. Jim enfrenta escolhas difíceis e passa a usar a armadura do Eclipse, em preto e vermelho.'],
@@ -72,3 +72,54 @@ function qEnd(){
  $('#qr').onclick=()=>{qi=0;qs=0;qShow()};
 }
 qShow();
+
+/* extras */
+const ld=$('#ld');addEventListener('load',()=>setTimeout(()=>ld.classList.add('hide'),500));setTimeout(()=>ld.classList.add('hide'),3500);
+const cu=$('#cur');
+if(matchMedia('(pointer:fine)').matches){addEventListener('pointermove',e=>{cu.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;cu.classList.add('on')});document.addEventListener('pointerover',e=>cu.classList.toggle('big',!!(e.target.closest&&e.target.closest('a,button,.card'))))}
+/* modal */
+const D={'Jim Lake Jr.':'Adolescente de Arcadia Oaks escolhido pelo Amuleto da Luz do Dia. Divide a vida entre a escola, a família e a guerra contra os Gumm-Gumms.',
+'Toby':'Melhor amigo de Jim, leal e divertido. Luta com um martelo de guerra e nunca deixa o amigo sozinho.',
+'Claire':'Aliada corajosa e esperta que entra de cabeça no mundo dos trolls. Mais tarde empunha o Cajado das Sombras.',
+'Blinky':'Troll estudioso e treinador do Caçador. Medroso na aparência, mas sempre presente quando importa.',
+'AAARRRGGHH!!!':'Troll gigante e gentil, guerreiro poderoso. Fala apenas o próprio nome, mas todos o entendem.',
+'Merlin':'Mago criador do Amuleto da Luz do Dia e o primeiro Caçador de Trolls.',
+'Gunmar':'Gunmar, o Negro, rei dos Gumm-Gumms. Seu plano depende do Eclipse para conquistar a superfície.',
+'Bular':'Filho de Gunmar, guerreiro brutal e grande rival do Caçador.'};
+const md=$('#md');
+function openM(i){const c=chars[i];const im=$('#mdi');im.src=c[0];im.alt=c[1];im.style.objectPosition=P[c[1]];$('#mdn').textContent=c[1];$('#mdr').textContent=c[2];$('#mdt').textContent=D[c[1]];md.classList.add('on');document.body.style.overflow='hidden'}
+function closeM(){md.classList.remove('on');document.body.style.overflow=''}
+$('#chars').addEventListener('click',e=>{const c=e.target.closest('.card');if(c)openM(+c.dataset.i)});
+$('#chars').addEventListener('keydown',e=>{if(e.key==='Enter'){const c=e.target.closest('.card');if(c)openM(+c.dataset.i)}});
+md.addEventListener('click',e=>{if(e.target===md||e.target.id==='mdx')closeM()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+/* mapa */
+const PL=[['Casa do Jim','Onde Jim mora com a mãe e esconde o segredo de ser o Caçador.'],['Escola Arcadia Oaks','Onde Jim, Toby e Claire dividem aulas e segredos.'],['Heartstone Trollmarket','O refúgio dos trolls, escondido sob a cidade.'],['Darklands','O reino sombrio dos Gumm-Gumms, de onde Gunmar planeja a conquista.']];
+document.querySelectorAll('.pin').forEach(p=>p.onclick=()=>{document.querySelectorAll('.pin').forEach(x=>x.classList.remove('on'));p.classList.add('on');const m=$('#mpi'),k=PL[p.dataset.k];m.innerHTML=`<b>${k[0]}</b><p>${k[1]}</p>`;m.classList.remove('sw');m.offsetWidth;m.classList.add('sw')});
+/* curiosidades */
+document.querySelectorAll('.flip').forEach(f=>f.onclick=()=>f.classList.toggle('on'));
+/* som */
+let snd=false,AC;const sb=$('#snd');
+function tone(t){if(!snd)return;AC=AC||new(window.AudioContext||window.webkitAudioContext)();const n=t==='gloria'?[440,554,659,880]:[220,185,147,110];n.forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain(),s=AC.currentTime+i*.12;o.type=t==='gloria'?'sine':'sawtooth';o.frequency.value=f;g.gain.setValueAtTime(.0001,s);g.gain.exponentialRampToValueAtTime(.1,s+.03);g.gain.exponentialRampToValueAtTime(.0001,s+.5);o.connect(g);g.connect(AC.destination);o.start(s);o.stop(s+.55)})}
+sb.onclick=()=>{snd=!snd;sb.textContent=snd?'🔊 Som':'🔇 Som';sb.setAttribute('aria-pressed',snd);tone(root.dataset.t)};
+document.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>tone(o.dataset.t)));
+/* quiz 2 */
+const Q2=[['Seu superpoder seria…',[['Coragem para liderar',0],['Humor que anima todo mundo',1],['Estratégia afiada',2],['Sabedoria dos livros',3]]],
+['Num sábado livre você…',[['Parto para a aventura',0],['Maratono séries e como pizza',1],['Organizo o plano de todos',2],['Leio um livro antigo',3]]],
+['Seus amigos dizem que você é…',[['Determinado',0],['Leal e divertido',1],['Corajoso e esperto',2],['Gentil e forte',4]]],
+['Sua arma favorita…',[['Espada de luz',0],['Martelo de guerra',1],['Cajado das sombras',2],['Meus punhos e meu coração',4]]]];
+let q2i=0,q2s=[0,0,0,0,0];const b2=$('#qbox2');
+function q2Show(){
+ if(q2i>=Q2.length)return q2End();
+ const q=Q2[q2i];
+ b2.innerHTML=`<div class="qbar"><i style="width:${q2i/Q2.length*100}%"></i></div><div class="qin"><small style="color:var(--ac2)">Pergunta ${q2i+1} de ${Q2.length}</small><h3>${q[0]}</h3>${q[1].map((o,i)=>`<button class="qa" data-i="${i}">${o[0]}</button>`).join('')}</div>`;
+ requestAnimationFrame(()=>b2.querySelector('.qbar i').style.width=((q2i+1)/Q2.length*100)+'%');
+ b2.querySelectorAll('.qa').forEach(b=>b.onclick=()=>{q2s[q[1][+b.dataset.i][1]]++;b2.style.opacity=0;setTimeout(()=>{q2i++;q2Show();b2.style.opacity=1},400)});
+}
+function q2End(){
+ const w=q2s.indexOf(Math.max(...q2s)),c=chars[w];
+ b2.innerHTML=`<div class="qbar"><i style="width:100%"></i></div><div class="qres res qin"><img src="${c[0]}" alt="${c[1]}" style="object-position:${P[c[1]]}"><h3 class="grad" style="font-size:2rem;font-family:Impact,sans-serif;text-transform:uppercase">${c[1]}</h3><p style="color:var(--mut);margin:8px 0">${D[c[1]]}</p><button class="btn" id="q2r" style="border:0;cursor:pointer;font:inherit;font-weight:700">Refazer</button></div>`;
+ $('#q2r').onclick=()=>{q2i=0;q2s=[0,0,0,0,0];q2Show()};
+}
+q2Show();
+ 
